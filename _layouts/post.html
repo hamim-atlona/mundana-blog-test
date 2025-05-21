@@ -77,7 +77,7 @@ layout: default
 				<span class="font-weight-bold">Categories:</span> 
 				<span class="catlist">
 					{% for category in page.categories %}
-						<a class="sscroll btn btn btn-outline-info btn-sm font-weight-bold" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category | capitalize  }}</a><span class="sep">, </span>
+						<a class="sscroll btn btn btn-outline-info btn-sm font-weight-bold" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category | capitalize  }}</a><span class="sep"> </span>
 					{% endfor %}
 				</span>
 			</div>
