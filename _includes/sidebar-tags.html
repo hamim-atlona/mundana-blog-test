@@ -1,14 +1,16 @@
 <div class="sticky-top sticky-top-offset">
     <h4 class="font-weight-bold spanborder mt-5"><span>All Tags</span></h4>
     <div class="tag-cloud">
-      {% assign tags_array = site.tags %}
-      {% assign sorted_tags = tags_array | sort: "last" | reverse %}
+      {% assign tag_counts = site.tags %}
+      {% assign sorted_tags = tag_counts | sort_natural: "last" | reverse %}
+      {% assign top_tags = sorted_tags | slice: 0, 10 %}
 
       {% assign count = 0 %}
-      {% for tag in sorted_tags %}
+       {% for tag in top_tags %}
+        {% assign tag_name = tag[0] %}
         {% if count < 10 %}
-          <a class="btn btn-sm btn-outline-secondary m-1" href="{{ site.baseurl }}/tag/?name={{ tag[0] | url_encode }}">
-            {{ tag[0] }}
+          <a class="btn btn-sm btn-outline-secondary m-1" href="{{ site.baseurl }}/tag/?name={{ tag_name | url_encode }}">
+            {{ tag_name }}
           </a>
           {% assign count = count | plus: 1 %}
         {% endif %}
