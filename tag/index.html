@@ -7,7 +7,7 @@ permalink: /tag/
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <h4 id="tag-title" class="font-weight-bold title h6 text-uppercase mb-4 spanborder">Tag: </h4>
+      <h4 id="tag-title" class="font-weight-bold title text-uppercase mb-4 mt-5 spanborder">Tag:</h4>
 
       <div id="posts-container">
         {% for post in site.posts %}
@@ -35,7 +35,7 @@ permalink: /tag/
     const posts = document.querySelectorAll(".post-card");
 
     if (tagParam) {
-      tagTitle.textContent = `Tag: ${tagParam}`;
+      tagTitle.textContent = `Tag: <span class="text-success">${tagParam.charAt(0).toUpperCase() + tagParam.slice(1)}</span>`;
       posts.forEach(post => {
         post.style.display = post.dataset.tag === tagParam.toLowerCase() ? "block" : "none";
       });
