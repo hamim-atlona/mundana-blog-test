@@ -1,9 +1,17 @@
-<h4 class="font-weight-bold spanborder mt-5"><span>All Tags</span></h4>
-<div class="tag-cloud">
-  {% assign sorted_tags = site.tags | sort %}
-  {% for tag in sorted_tags %}
-    <a class="btn btn-sm btn-outline-secondary m-1" href="{{ site.baseurl }}/tag/?name={{ tag[0] | url_encode }}">
-      {{ tag[0] }}
-    </a>
-  {% endfor %}
-</div>
+<div class="sticky-top sticky-top-offset">
+    <h4 class="font-weight-bold spanborder mt-5"><span>All Tags</span></h4>
+    <div class="tag-cloud">
+      {% assign tags_array = site.tags %}
+      {% assign sorted_tags = tags_array | sort: "last" | reverse %}
+
+      {% assign count = 0 %}
+      {% for tag in sorted_tags %}
+        {% if count < 10 %}
+          <a class="btn btn-sm btn-outline-secondary m-1" href="{{ site.baseurl }}/tag/?name={{ tag[0] | url_encode }}">
+            {{ tag[0] }}
+          </a>
+          {% assign count = count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+    </div>
+</div> 
