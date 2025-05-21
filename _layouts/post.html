@@ -8,11 +8,18 @@ layout: default
 			<div class="row {% if page.image %} justify-content-between {% else %} justify-content-center {% endif %}">
 				<div class="{% if page.image %} col-md-6 {% else %} col-md-8 {% endif %} pr-0 pr-md-4 pt-4 pb-4 align-self-center">
 					<p class="text-uppercase font-weight-bold">
-                        <span class="catlist">
+						<div class="mb-4">
+							<span class="taglist">
+							{% for tag in page.tags %}
+								<a class="sscroll btn btn-light btn-sm font-weight-bold" href="{{ site.baseurl }}/tag/?name={{ tag | url_encode }}">{{ tag | downcase }}</a><span class="sep">, </span>
+							{% endfor %}
+							</span>
+						</div>
+                        <!-- <span class="catlist">
 						{% for category in page.categories %}
                           <a class="sscroll text-danger" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category | downcase }}</a><span class="sep">, </span>
                         {% endfor %}
-                        </span>
+                        </span> -->
 					</p>
 					<h1 class="display-4 mb-4 article-headline">{{ page.title }}</h1>
 					<div class="d-flex align-items-center">
@@ -69,14 +76,21 @@ layout: default
 			{{ content }}                
 			</article>
 			
-			<!-- Tags -->
+			<!-- Tags
 			<div class="mb-4">
 				<span class="taglist">
 				{% for tag in page.tags %}
 				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="{{ site.baseurl }}/tag/?name={{ tag | url_encode }}">{{ tag | downcase }}</a>
 				{% endfor %}
 				</span>
-			</div>
+			</div> -->
+
+			<!-- Categories -->
+			 <span class="catlist">
+				{% for category in page.categories %}
+					<a class="sscroll text-danger" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category | downcase }}</a><span class="sep">, </span>
+				{% endfor %}
+            </span>
  
             <!-- Mailchimp Subscribe Form -->
             {% if site.mailchimp-list %}
