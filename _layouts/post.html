@@ -74,12 +74,10 @@ layout: default
 			<!-- Categories -->
 			 <hr class="my-4">
 			 <div class="mb-4 mt-4">
-				<span>Categories:</span> 
+				<span class="font-weight-bold">Categories:</span> 
 				<span class="catlist">
 					{% for category in page.categories %}
-					<span class="badge badge-info">
 						<a class="sscroll btn btn btn-outline-info btn-sm font-weight-bold" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category | capitalize  }}</a><span class="sep">, </span>
-					</span>
 					{% endfor %}
 				</span>
 			</div>
