@@ -1,0 +1,46 @@
+---
+title: "Tag"
+layout: default
+permalink: /tag/
+---
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1 id="tag-title" class="font-weight-bold title h6 text-uppercase mb-4">Tag: </h1>
+
+      <div id="posts-container">
+        {% for post in site.posts %}
+          {% for tag in post.tags %}
+            <div class="post-card" data-tag="{{ tag | downcase | escape }}">
+              {% include main-loop-card.html %}
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      {% include sidebar-featured.html %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tagParam = urlParams.get("name");
+    const tagTitle = document.getElementById("tag-title");
+    const posts = document.querySelectorAll(".post-card");
+
+    if (tagParam) {
+      tagTitle.textContent = `Tag: ${tagParam}`;
+      posts.forEach(post => {
+        post.style.display = post.dataset.tag === tagParam.toLowerCase() ? "block" : "none";
+      });
+    } else {
+      tagTitle.textContent = "No tag selected";
+      posts.forEach(post => (post.style.display = "none"));
+    }
+  });
+</script>
