@@ -1,4 +1,9 @@
 <div class="sticky-top sticky-top-offset">
+  {% if page.show_categories %}
+    {% include sidebar-featured.html %}
+    {% include sidebar-categories.html %}
+  {% else %}
     {% include sidebar-featured.html %}
     {% include sidebar-tags.html %}
-</div> 
+  {% endif %}
+</div>
