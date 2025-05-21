@@ -9,7 +9,7 @@ layout: default
 				<div class="{% if page.image %} col-md-6 {% else %} col-md-8 {% endif %} pr-0 pr-md-4 pt-4 pb-4 align-self-center">
 					<p class="text-uppercase font-weight-bold">
 						<div class="mb-4">
-							<span class="taglist">
+							<span class="catlist taglist">
 							{% for tag in page.tags %}
 								<a class="sscroll btn btn-light btn-sm font-weight-bold" href="{{ site.baseurl }}/tag/?name={{ tag | url_encode }}">{{ tag | downcase }}</a><span class="sep">, </span>
 							{% endfor %}
@@ -86,12 +86,17 @@ layout: default
 			</div> -->
 
 			<!-- Categories -->
-			 <span class="catlist">
-				{% for category in page.categories %}
-					<a class="sscroll text-danger" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category | downcase }}</a><span class="sep">, </span>
-				{% endfor %}
-            </span>
- 
+			 <div class="mb-4">
+				<span>Categories:</span> 
+				<span class="catlist">
+					{% for category in page.categories %}
+					<span class="badge badge-info">
+						<a class="sscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category | capitalize  }}</a><span class="sep">, </span>
+					</span>
+					{% endfor %}
+				</span>
+			</div>
+			
             <!-- Mailchimp Subscribe Form -->
             {% if site.mailchimp-list %}
 			<div class="border p-5 bg-lightblue">
