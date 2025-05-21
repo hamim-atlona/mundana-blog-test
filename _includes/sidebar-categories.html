@@ -1,0 +1,11 @@
+<div>
+    <h4 class="font-weight-bold spanborder"><span>Featured</span></h4>  
+    <ol class="list-featured">	
+        {% assign sorted_categories = site.categories | sort %}			
+        {% for category in sorted_categories %}                 
+            <a class="btn btn-sm btn-outline-secondary m-1" href="{{ site.baseurl }}/tag/?name={{ tag[0] | url_encode }}">
+                {{ tag[0] }}
+            </a>         
+        {% endfor %}   
+    </ol>
+</div>
